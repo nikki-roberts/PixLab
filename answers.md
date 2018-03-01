@@ -1,4 +1,4 @@
 ## Activity 1
-	1) 3 bits ?
-	2) 1 byte
+	1) 8 bits
+	2) 3 bytes
 	3) 307,200
