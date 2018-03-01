@@ -796,8 +796,10 @@ public class PictureExplorer implements MouseMotionListener, ActionListener, Mou
 	 * Test Main. It will explore the beach
 	 */
 	public static void main(String args[]) {
-		Picture pix = new Picture("beach.jpg");
-		pix.explore();
+		Picture pix = new Picture("cat.jpg");
+		Picture smallPix = pix.scale(0.75, 0.75);
+		smallPix.write("smallMyPix.jpg");
+		smallPix.explore();
 	}
 
 }
