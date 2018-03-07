@@ -73,6 +73,54 @@ public class Picture extends SimplePicture {
 
 	////////////////////// methods ///////////////////////////////////////
 
+	public void keepOnlyBlue() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(0);
+				pixelObj.setGreen(0);
+			}
+		}
+	}
+
+	public void negate() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(255 - pixelObj.getRed());
+				pixelObj.setGreen(255 - pixelObj.getGreen());
+				pixelObj.setBlue(255 - pixelObj.getBlue());
+			}
+		}
+	}
+
+	public void grayscale() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				int total = 0;
+				int average = 0;
+				total = total + pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen();
+				average = (total / 3);
+				pixelObj.setRed(average);
+				pixelObj.setGreen(average);
+				pixelObj.setBlue(average);
+				total = 0;
+				average = 0;
+			}
+		}
+	}
+
+	public void fixUnderwater() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(pixelObj.getRed() * 5);
+				// pixelObj.setGreen(pixelObj.getGreen() * 0.75 );
+				// pixelObj.setBlue(pixelObj.getBlue() * 2 );
+			}
+		}
+	}
 	/**
 	 * Method to return a string with information about this picture.
 	 * 
