@@ -147,7 +147,7 @@ public class Picture extends SimplePicture {
 	}
 
 	/** Method that mirrors the picture around a horizontal mirror in the center 
-		* of the picutre from bottom to top
+		* of the picture from bottom to top
 		*/
 	public void mirrorHorizontalBotToTop() {
 		Pixel[][] pixels = this.getPixels2D();
@@ -159,6 +159,23 @@ public class Picture extends SimplePicture {
 				topPixel = pixels[row][col];
 				bottomPixel = pixels[height - 1 - row][col];
 				bottomPixel.setColor(topPixel.getColor());
+			}
+		}
+	}
+
+	/** Method that mirrors a square part of the picture around a diagonal mirror in the picture
+		* from bottom left to top right
+		*/
+	public void mirrorDiagonal() {
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel bottomLeftPixel = null;
+		Pixel topRightPixel = null;
+		int height = pixels.length;
+		for (int row = 0; row < height; row++) {
+			for (int col = 0; col < height; col++) {
+				bottomLeftPixel = pixels[col][row];
+				topRightPixel = pixels[row][col];
+				topRightPixel.setColor(bottomLeftPixel.getColor());
 			}
 		}
 	}
