@@ -83,6 +83,13 @@ public class PictureTester
     gull.mirrorGull();
     gull.explore();
   }
+
+  public static void testSecondCopy() {
+    Picture seagull = new Picture("seagull.jpg");
+    seagull.explore();
+    seagull.createCollage();
+    seagull.explore();
+  }
   /** Method to test the collage method */
   public static void testCollage()
   {
@@ -119,7 +126,8 @@ public class PictureTester
     // testMirrorHorizontalBotToTop();
     // testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
+    // testMirrorGull();
+    testSecondCopy();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
