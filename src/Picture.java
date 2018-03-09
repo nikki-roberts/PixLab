@@ -85,6 +85,33 @@ public class Picture extends SimplePicture {
 
 	}
 
+
+	public void negate() {
+
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(255 - pixelObj.getRed());
+				pixelObj.setGreen(255 - pixelObj.getGreen());
+				pixelObj.setBlue(255 - pixelObj.getBlue());
+			}
+		}
+
+	}
+
+	public void grayscale() {
+		int i = 0;
+		Pixel[][] pixels = this.getPixels2D();
+		for(Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				i = (pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) /3;
+				pixelObj.setRed(i);
+				pixelObj.setGreen(i);
+				pixelObj.setBlue(i);
+			}
+		}
+
+	}
 	/** Method to set the blue to 0 */
 	public void zeroBlue() {
 		Pixel[][] pixels = this.getPixels2D();
@@ -301,6 +328,30 @@ public class Picture extends SimplePicture {
 		this.write("collage.jpg");
 	}
 
+	public void myCollage() {
+		Picture flower1 = new Picture("flower1.jpg");
+		Picture flower2 = new Picture("flower2.jpg");
+		Picture flower3 = new Picture("flower2.jpg");
+		this.copy(flower1, 0, 0);
+		this.copy(flower2, 100, 0);
+		this.copy(flower1, 200, 0);
+		this.copy(flower3, 50, 50);
+		Picture flowerNoBlue = new Picture(flower2);
+		flowerNoBlue.zeroBlue();
+		Picture flowerNegate = new Picture(flower1);
+		flowerNegate.negate();
+		Picture flowerGrey = new Picture(flower3);
+		flowerGrey.grayscale();
+		this.copy(flowerNoBlue, 300, 0);
+		this.copy(flower1, 400, 0);
+		this.copy(flower2, 500, 0);
+		this.copy(flowerNegate, 150, 150);
+		this.copy(flowerGrey, 325, 127);
+		this.mirrorVertical();
+		this.mirrorDiagonal();
+		this.mirrorHorizontal();
+		this.write("myCollage.jpg");
+	}
 	/**
 	 * Method to show large changes in color
 	 * 
